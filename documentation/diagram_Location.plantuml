@@ -1,0 +1,35 @@
+@startuml
+
+class Vehicule {
+    -marque : string
+    -modele : string
+    -vitesseMax : int
+    -prixJournalier : float
+    +afficherInfos()
+    +calculerCoutLocation(int nbJours)
+}
+
+class Voiture {
+    -nombrePortes : int
+    -typeCarburant : string
+    +afficherInfos()
+    +calculerCoutLocation(int nbJours)
+}
+
+class Moto {
+    -typeGuidon : string
+    +afficherInfos()
+    +calculerCoutLocation(int nbJours)
+}
+
+class Location {
+    -nbJours : int
+    +louerVehicule(Vehicule vehicule)
+    +afficherDetailsLocation()
+}
+
+Vehicule <|-- Voiture : hérite de
+Vehicule <|-- Moto : hérite de
+Vehicule "0..*" <-- "0..*" Location
+
+@enduml

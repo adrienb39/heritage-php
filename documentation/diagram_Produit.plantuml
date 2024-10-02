@@ -1,0 +1,34 @@
+@startuml
+
+class Produit {
+    -nom : string
+    -prixInitial : float
+    -quantite : int
+    +afficherInfos()
+    +calculerPrixFinal()
+}
+
+class ProduitAlimentaire {
+    -datePeremption : DateTime
+    +afficherInfos()
+    +calculerPrixFinal()
+}
+
+class ProduitElectronique {
+    -garantie : int
+    +afficherInfos()
+    +calculerPrixFinal()
+}
+
+class Catalogue {
+    -produits : Produit
+    +ajouterProduit(Produit produit)
+    +afficherProduits()
+    +calculerTotalPrix()
+}
+
+Produit <|-- ProduitAlimentaire : hérite de
+Produit <|-- ProduitElectronique : hérite de
+Produit "0..*" <-- "0..*" Catalogue
+
+@enduml
